@@ -1,2 +1,2 @@
 [jenkins]
-$JENKINS_IP ansible_connection=ssh ansible_user=ec2-user 
+<JENKINS_IP> ansible_connection=ssh ansible_user=ec2-user 
