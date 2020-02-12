@@ -1,0 +1,27 @@
+---
+- name: add config in sonar confi file 
+  blockinfile:
+    path: /opt/sonarqube/conf/sonar.properties
+    block: |
+          sonar.jdbc.username=sonarqube_user
+          sonar.jdbc.password=admin@123
+          sonar.jdbc.url=jdbc:mysql://localhost:3306/sonarqube_db?useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&useConfigs=maxPerformance              
+- name: change the run user in sonar
+  replace:
+    path: /opt/sonarqube/bin/linux-x86-64/sonar.sh
+    regexp: '#RUN_AS_USER='
+    replace: 'RUN_AS_USER=sonarqube'
+
+- name: copy the service file 
+  copy:
+    src: sonar.service
+    dest:  /etc/systemd/system/sonar.service
+    mode: '0755'
+
+- name: start sonar service
+  systemd:
+    name: sonar
+    state: started
+    enabled: yes
+
+

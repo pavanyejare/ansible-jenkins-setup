@@ -1,0 +1,5 @@
+---
+- hosts: jenkins 
+  become: True
+  roles: 
+    - sonarqube
