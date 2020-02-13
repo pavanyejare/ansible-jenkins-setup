@@ -10,18 +10,18 @@
 
 - name: download sonarqube file from
   unarchive:
-    src: https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-8.1.0.31237.zip
+    src: https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-7.6.zip
     dest: /opt/
     remote_src: yes
   when: sonar_opt_path.stat.exists == False
 
 - name: check if sonaraqube-*
   stat:
-    path: /opt/sonarqube-8.1.0.31237
+    path: /opt/sonarqube-7.6
   register: sonar_path
 
 - name: move the folder 
-  command: mv /opt/sonarqube-8.1.0.31237 /opt/sonarqube
+  command: mv /opt/sonarqube-7.6 /opt/sonarqube
   when: sonar_path.stat.exists
 
 - name: change owner of sonarqube 

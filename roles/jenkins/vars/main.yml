@@ -1,5 +1,5 @@
 ---
 # vars file for jenkins
-jenkins_user: "admin"
-jenkins_password: "admin@123"
+jenkins_user: <JENKINS_USER>
+jenkins_password: <JENKINS_PASSWORD>
 

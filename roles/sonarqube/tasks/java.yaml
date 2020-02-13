@@ -1,16 +1,12 @@
 ---
-- name: update yum 
-  yum:
-    name: '*'
-    state: latest
 - name: epel-release repo
   yum:
-    name: epel-release
-    state: latest
+    name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+    state: present
 - name: install java 1.8
   yum:
     #name: java-1.8.0-openjdk-devel
-    name: java-11-openjdk-devel
+    name: java-11
     state: latest
 
 - name: check java exists 
